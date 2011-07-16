@@ -1,4 +1,4 @@
-package de.rating;
+package de.rating.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +14,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
+
+import de.rating.JRating;
+import de.rating.RatingAlignment;
 
 public class BasicRatingUI extends RatingUI {
 
@@ -124,7 +127,7 @@ public class BasicRatingUI extends RatingUI {
 			boolean marked = (i < rateComponent.getMarkedCount());
 			boolean selected = (i == rateComponent.getMarkedCount() - 1);
 
-			paintMark(g, c, i, rect, marked, selected,
+			paintMark(g, (JRating) c, i, rect, marked, selected,
 					rateComponent.isFocusOwner());
 
 			if (rateComponent.getAlignment().equals(RatingAlignment.HORIZONTAL)) {
@@ -135,7 +138,7 @@ public class BasicRatingUI extends RatingUI {
 		}
 	}
 
-	protected void paintMark(Graphics g, JComponent c, int index,
+	protected void paintMark(Graphics g, JRating c, int index,
 			Rectangle rect, boolean marked, boolean selected, boolean focused) {
 		g.setColor(Color.black);
 		if (marked) {
@@ -153,7 +156,7 @@ public class BasicRatingUI extends RatingUI {
 		}
 	}
 
-	private Dimension getMarkSize() {
+	protected Dimension getMarkSize() {
 		return new Dimension(16, 16);
 	}
 

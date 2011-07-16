@@ -1,4 +1,4 @@
-package de.rating;
+package de.rating.ui;
 
 import java.awt.Point;
 

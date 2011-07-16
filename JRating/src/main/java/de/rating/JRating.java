@@ -5,6 +5,9 @@ import java.awt.Point;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
+import de.rating.ui.BasicRatingUI;
+import de.rating.ui.RatingUI;
+
 public class JRating extends JComponent implements RatingListener {
 
 	private static final long serialVersionUID = 1L;
