@@ -43,8 +43,8 @@ public class StarRenderer implements RatingRenderer {
 		}
 
 		try {
-			imageFocusedMarked = ImageIO.read(load("de/rating/ui/star/mark" + urlSize + ".png"));
-			imageFocused = ImageIO.read(load("de/rating/ui/star/" + urlSize + ".png"));
+			imageFocusedMarked = ImageIO.read(load("de/rating/ui/star/mark-focus" + urlSize + ".png"));
+			imageFocused = ImageIO.read(load("de/rating/ui/star/focus" + urlSize + ".png"));
 			imageMarked = ImageIO.read(load("de/rating/ui/star/mark" + urlSize + ".png"));
 			image = ImageIO.read(load("de/rating/ui/star/" + urlSize + ".png"));
 		} catch (IOException e) {

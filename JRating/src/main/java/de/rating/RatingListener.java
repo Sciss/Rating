@@ -2,7 +2,7 @@ package de.rating;
 
 public interface RatingListener {
 
-	public void indexChanged();
+	public void indexChanged(RatingEvent event);
 	
-	public void maxCountChanged();
+	public void maxCountChanged(RatingEvent event);
 }

@@ -107,12 +107,12 @@ public class JRating extends JComponent implements RatingListener {
 	}
 
 	@Override
-	public void indexChanged() {
+	public void indexChanged(RatingEvent event) {
 		repaint();
 	}
 
 	@Override
-	public void maxCountChanged() {
+	public void maxCountChanged(RatingEvent event) {
 		repaint();
 	}
 }

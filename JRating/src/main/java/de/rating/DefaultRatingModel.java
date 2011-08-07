@@ -38,14 +38,22 @@ public class DefaultRatingModel implements RatingModel {
 	}
 
 	private void fireIndexChanged() {
+		RatingEvent event = null;
 		for (RatingListener listener : listeners) {
-			listener.indexChanged();
+			if(event == null) {
+				event = new RatingEvent(this, getMarkCount(), getMaxCount());
+			}
+			listener.indexChanged(event);
 		}
 	}
 	
 	private void fireMaxCountChanged() {
+		RatingEvent event = null;
 		for (RatingListener listener : listeners) {
-			listener.maxCountChanged();
+			if(event == null) {
+				event = new RatingEvent(this, getMarkCount(), getMaxCount());
+			}
+			listener.maxCountChanged(event);
 		}
 	}
 
