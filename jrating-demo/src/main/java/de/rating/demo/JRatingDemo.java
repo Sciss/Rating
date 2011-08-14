@@ -24,7 +24,7 @@ public class JRatingDemo extends JFrame {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("guigarage.com: jRating-Demo");
+		setTitle("guigarage.com: jRating-Preview");
 		try {
 			back = ImageIO.read(load("de/rating/demo/back.png"));
 		} catch (IOException e) {
