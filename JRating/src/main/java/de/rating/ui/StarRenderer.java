@@ -1,16 +1,13 @@
 package de.rating.ui;
 
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import de.rating.JRating;
-
-public class StarRenderer implements RatingRenderer {
+public class StarRenderer extends AbstractImageRatingRenderer {
 
 	private boolean largeSize;
 	
@@ -52,25 +49,6 @@ public class StarRenderer implements RatingRenderer {
 	}
 
 	@Override
-	public void paint(Graphics g, JRating c, int index, 
-			boolean marked, boolean selected, boolean focused) {
-		if(marked) {
-			if(focused) {
-				g.drawImage(imageFocusedMarked, 0, 0, null);
-			} else {
-				g.drawImage(imageMarked, 0, 0, null);
-			}
-		} else {
-			if(focused) {
-				g.drawImage(imageFocused, 0, 0, null);
-			} else {
-				g.drawImage(image, 0, 0, null);
-			}
-		}
-		
-	}
-
-	@Override
 	public Dimension getMarkSize() {
 		if(largeSize) {
 			return new Dimension(32, 32);
@@ -92,4 +70,24 @@ public class StarRenderer implements RatingRenderer {
         }
         return url;
     }
+
+	@Override
+	public BufferedImage getFocusedAndMarkedImage() {
+		return imageFocusedMarked;
+	}
+
+	@Override
+	public BufferedImage getFocusedImage() {
+		return imageFocused;
+	}
+
+	@Override
+	public BufferedImage getMarkedImage() {
+		return imageMarked;
+	}
+
+	@Override
+	public BufferedImage getUnmarkedImage() {
+		return image;
+	}
 }

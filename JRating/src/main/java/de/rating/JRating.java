@@ -5,8 +5,9 @@ import java.awt.Point;
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
-import de.rating.ui.BasicRatingUI;
 import de.rating.ui.RatingUI;
+import de.rating.ui.RenderBasedRatingUI;
+import de.rating.ui.StarRenderer;
 
 public class JRating extends JComponent implements RatingListener {
 
@@ -24,7 +25,8 @@ public class JRating extends JComponent implements RatingListener {
 		setModel(new DefaultRatingModel());
 		setAlignment(RatingAlignment.HORIZONTAL);
 		setGap(2);
-		setUI(new BasicRatingUI());
+		setUI(new RenderBasedRatingUI(new StarRenderer()));
+//		setUI(new BasicRatingUI());
 		setFocusable(true);
 	}
 	
@@ -53,11 +55,11 @@ public class JRating extends JComponent implements RatingListener {
 	}
 	
 	public void setMaxCount(int count) {
-		getModel().setMarkCount(count);
+		getModel().setMaxCount(count);
 	}
 		
 	@Override
-	protected void setUI(ComponentUI newUI) {
+	public void setUI(ComponentUI newUI) {
 		if(newUI instanceof RatingUI) {
 			setUI((RatingUI)newUI);
 		} else {
