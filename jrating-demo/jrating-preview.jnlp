@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-15"?>
+<jnlp spec="1.0+" codebase="http://www.guigarage.com/downloads/demos/jrating-preview/" href="jrating-preview.jnlp">
+    <information>
+        <title>JRating Preview</title>
+        <vendor>Hendrik Ebbers</vendor>
+        <homepage href="http://www.guigarage.com"/>
+        <description>JRating Preview</description>
+    </information>
+    <security> 
+      <all-permissions/> 
+    </security> 
+    <resources>
+        <j2se version="1.6"/>
+		<jar href="jrating-demo-0.1-SNAPSHOT.jar"/>
+		<jar href="jrating-0.1-SNAPSHOT.jar"/>
+    </resources>
+    <application-desc main-class="de.rating.demo.JRatingDemo"/>
+</jnlp>
