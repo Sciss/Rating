@@ -26,7 +26,7 @@ public class JRatingDemo extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("guigarage.com: jRating-Preview");
 		try {
-			back = ImageIO.read(load("de/rating/demo/back.png"));
+			back = ImageIO.read(load("/de/rating/demo/back.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

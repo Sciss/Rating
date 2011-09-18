@@ -21,10 +21,10 @@ public class SmileyRenderer extends AbstractImageRatingRenderer {
 	
 	public SmileyRenderer() {
 		try {
-			imageFocusedMarked = ImageIO.read(load("de/rating/demo/face-smile-focused.png"));
-			imageFocused = ImageIO.read(load("de/rating/demo/face-sad-focused.png"));
-			imageMarked = ImageIO.read(load("de/rating/demo/face-smile.png"));
-			image = ImageIO.read(load("de/rating/demo/face-sad.png"));
+			imageFocusedMarked = ImageIO.read(load("/de/rating/demo/face-smile-focused.png"));
+			imageFocused = ImageIO.read(load("/de/rating/demo/face-sad-focused.png"));
+			imageMarked = ImageIO.read(load("/de/rating/demo/face-smile.png"));
+			image = ImageIO.read(load("/de/rating/demo/face-sad.png"));
 		} catch (IOException e) {
 		}
 	}
