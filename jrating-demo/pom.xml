@@ -10,9 +10,11 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>de.rating</groupId>
+			<groupId>com.guigarage</groupId>
 			<artifactId>jrating</artifactId>
 			<version>0.1-SNAPSHOT</version>
+			<type>jar</type>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 	<build>

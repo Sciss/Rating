@@ -1,4 +1,4 @@
-package de.rating.ui;
+package com.guigarage.jrating.ui;
 
 import java.awt.Point;
 

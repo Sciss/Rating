@@ -1,10 +1,11 @@
-package de.rating.ui;
+package com.guigarage.jrating.ui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import de.rating.JRating;
+import com.guigarage.jrating.JRating;
+
 
 public class RenderBasedRatingUI extends BasicRatingUI {
 

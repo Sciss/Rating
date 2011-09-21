@@ -1,4 +1,4 @@
-package de.rating;
+package com.guigarage.jrating;
 
 import java.util.EventObject;
 

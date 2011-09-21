@@ -1,4 +1,4 @@
-package de.rating.ui;
+package com.guigarage.jrating.ui;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
@@ -40,10 +40,10 @@ public class StarRenderer extends AbstractImageRatingRenderer {
 		}
 
 		try {
-			imageFocusedMarked = ImageIO.read(load("/de/rating/ui/star/mark-focus" + urlSize + ".png"));
-			imageFocused = ImageIO.read(load("/de/rating/ui/star/focus" + urlSize + ".png"));
-			imageMarked = ImageIO.read(load("/de/rating/ui/star/mark" + urlSize + ".png"));
-			image = ImageIO.read(load("/de/rating/ui/star/" + urlSize + ".png"));
+			imageFocusedMarked = ImageIO.read(load("/com/guigarage/jrating/ui/star/mark-focus" + urlSize + ".png"));
+			imageFocused = ImageIO.read(load("/com/guigarage/jrating/ui/star/focus" + urlSize + ".png"));
+			imageMarked = ImageIO.read(load("/com/guigarage/jrating/ui/star/mark" + urlSize + ".png"));
+			image = ImageIO.read(load("/com/guigarage/jrating/ui/star/" + urlSize + ".png"));
 		} catch (IOException e) {
 		}
 	}

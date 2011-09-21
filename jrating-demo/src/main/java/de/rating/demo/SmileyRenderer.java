@@ -7,7 +7,8 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import de.rating.ui.AbstractImageRatingRenderer;
+import com.guigarage.jrating.ui.AbstractImageRatingRenderer;
+
 
 public class SmileyRenderer extends AbstractImageRatingRenderer {
 

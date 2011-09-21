@@ -9,9 +9,10 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import de.rating.JRating;
-import de.rating.ui.RenderBasedRatingUI;
-import de.rating.ui.StarRenderer;
+import com.guigarage.jrating.JRating;
+import com.guigarage.jrating.ui.RenderBasedRatingUI;
+import com.guigarage.jrating.ui.StarRenderer;
+
 
 public class JRatingDemo extends JFrame {
 

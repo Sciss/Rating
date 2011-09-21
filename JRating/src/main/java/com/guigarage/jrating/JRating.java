@@ -1,13 +1,14 @@
-package de.rating;
+package com.guigarage.jrating;
 
 import java.awt.Point;
 
 import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 
-import de.rating.ui.RatingUI;
-import de.rating.ui.RenderBasedRatingUI;
-import de.rating.ui.StarRenderer;
+import com.guigarage.jrating.ui.RatingUI;
+import com.guigarage.jrating.ui.RenderBasedRatingUI;
+import com.guigarage.jrating.ui.StarRenderer;
+
 
 public class JRating extends JComponent implements RatingListener {
 

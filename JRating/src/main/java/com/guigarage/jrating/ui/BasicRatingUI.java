@@ -1,4 +1,4 @@
-package de.rating.ui;
+package com.guigarage.jrating.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,8 +15,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 
-import de.rating.JRating;
-import de.rating.RatingAlignment;
+import com.guigarage.jrating.JRating;
+import com.guigarage.jrating.RatingAlignment;
+
 
 public class BasicRatingUI extends RatingUI {
 

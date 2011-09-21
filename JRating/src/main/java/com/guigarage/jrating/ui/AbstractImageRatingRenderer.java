@@ -1,9 +1,10 @@
-package de.rating.ui;
+package com.guigarage.jrating.ui;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import de.rating.JRating;
+import com.guigarage.jrating.JRating;
+
 
 public abstract class AbstractImageRatingRenderer implements RatingRenderer {
 

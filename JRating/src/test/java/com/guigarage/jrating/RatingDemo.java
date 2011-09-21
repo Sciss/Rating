@@ -1,4 +1,4 @@
-package de.rating;
+package com.guigarage.jrating;
 
 import java.awt.GridLayout;
 
@@ -7,8 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import de.rating.ui.RenderBasedRatingUI;
-import de.rating.ui.StarRenderer;
+import com.guigarage.jrating.JRating;
+import com.guigarage.jrating.ui.RenderBasedRatingUI;
+import com.guigarage.jrating.ui.StarRenderer;
+
 
 public class RatingDemo extends JFrame {
 
