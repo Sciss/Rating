@@ -54,16 +54,17 @@ public class BasicRatingUI extends RatingUI {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			rateComponent.requestFocus();
+            process(e);
 		}
 
-		@Override
-		public void mouseClicked(MouseEvent e) {
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            process(e);
+        }
+
+        private void process(MouseEvent e) {
 			int index = getIndexAt(e.getPoint());
-			if (index >= 0) {
-				rateComponent.setMarkCount(Math.max(0, index + 1));
-			} else {
-				rateComponent.setMarkCount(0);
-			}
+            rateComponent.setMarkCount(index);
 		}
 	}
 
@@ -78,6 +79,7 @@ public class BasicRatingUI extends RatingUI {
 			rateComponent.addKeyListener(rateKeyHandler);
 			rateMouseHandler = new RateMouseHandler();
 			rateComponent.addMouseListener(rateMouseHandler);
+            rateComponent.addMouseMotionListener(rateMouseHandler);
 			rateFocusAdapter = new FocusListener() {
 				
 				@Override
@@ -102,6 +104,7 @@ public class BasicRatingUI extends RatingUI {
 			rateComponent.removeKeyListener(rateKeyHandler);
 			rateKeyHandler = null;
 			rateComponent.removeMouseListener(rateMouseHandler);
+            rateComponent.removeMouseMotionListener(rateMouseHandler);
 			rateMouseHandler = null;
 			rateComponent.removeFocusListener(rateFocusAdapter);
 			rateFocusAdapter = null;
@@ -164,26 +167,12 @@ public class BasicRatingUI extends RatingUI {
 	@Override
 	public int getIndexAt(Point p) {
 		Dimension dim = getMarkSize();
-		int x = paintInsets.left;
-		int y = paintInsets.top;
-		for (int i = 0; i < rateComponent.getMaxCount(); i++) {
-			Rectangle rect = new Rectangle();
-			rect.x = x;
-			rect.y = y;
-			rect.width = dim.width;
-			rect.height = dim.height;
-
-			if (rect.contains(p)) {
-				return i;
-			}
-
-			if (rateComponent.getAlignment().equals(RatingAlignment.HORIZONTAL)) {
-				x = x + rateComponent.getGap() + dim.width;
-			} else {
-				y = y + rateComponent.getGap() + dim.height;
-			}
-		}
-		return -1;
+        boolean horiz = rateComponent.getAlignment().equals(RatingAlignment.HORIZONTAL);
+        int off   = horiz ? p.x - paintInsets.left : p.y - paintInsets.top;
+        int ext   = horiz ? dim.width : dim.height;
+        int step  = ext + rateComponent.getGap();
+        int pos   = (off + ext * 2/3) / step;
+        return Math.max(0, Math.min(rateComponent.getMaxCount(), pos));
 	}
 
 	@Override
