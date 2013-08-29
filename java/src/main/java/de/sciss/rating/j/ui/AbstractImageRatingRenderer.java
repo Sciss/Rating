@@ -1,9 +1,9 @@
-package com.guigarage.jrating.ui;
+package de.sciss.rating.j.ui;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import com.guigarage.jrating.JRating;
+import de.sciss.rating.j.JRating;
 
 
 public abstract class AbstractImageRatingRenderer implements RatingRenderer {

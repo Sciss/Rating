@@ -1,10 +1,10 @@
-package com.guigarage.jrating.ui;
+package de.sciss.rating.j.ui;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import com.guigarage.jrating.JRating;
+import de.sciss.rating.j.JRating;
 
 
 public class RenderBasedRatingUI extends BasicRatingUI {

@@ -1,4 +1,4 @@
-package com.guigarage.jrating;
+package de.sciss.rating.j;
 
 public interface RatingListener {
 

@@ -1,15 +1,11 @@
-package com.guigarage.jrating;
+package de.sciss.rating.j;
 
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import javax.swing.*;
 
-import com.guigarage.jrating.JRating;
-import com.guigarage.jrating.ui.RenderBasedRatingUI;
-import com.guigarage.jrating.ui.StarRenderer;
+import de.sciss.rating.j.ui.RenderBasedRatingUI;
+import de.sciss.rating.j.ui.StarRenderer;
 
 
 public class RatingDemo extends JFrame {
@@ -17,7 +13,7 @@ public class RatingDemo extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public RatingDemo() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setTitle("Rating");
 		
 		getContentPane().setLayout(new GridLayout(4, 2));

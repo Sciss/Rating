@@ -1,4 +1,4 @@
-package com.guigarage.jrating.ui;
+package de.sciss.rating.j.ui;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
@@ -40,10 +40,10 @@ public class StarRenderer extends AbstractImageRatingRenderer {
 		}
 
 		try {
-			imageFocusedMarked = ImageIO.read(load("/com/guigarage/jrating/ui/star/mark-focus" + urlSize + ".png"));
-			imageFocused = ImageIO.read(load("/com/guigarage/jrating/ui/star/focus" + urlSize + ".png"));
-			imageMarked = ImageIO.read(load("/com/guigarage/jrating/ui/star/mark" + urlSize + ".png"));
-			image = ImageIO.read(load("/com/guigarage/jrating/ui/star/" + urlSize + ".png"));
+			imageFocusedMarked = ImageIO.read(load("/de/sciss/rating/star/mark-focus" + urlSize + ".png"));
+			imageFocused = ImageIO.read(load("/de/sciss/rating/star/focus" + urlSize + ".png"));
+			imageMarked = ImageIO.read(load("/de/sciss/rating/star/mark" + urlSize + ".png"));
+			image = ImageIO.read(load("/de/sciss/rating/star/" + urlSize + ".png"));
 		} catch (IOException e) {
 		}
 	}

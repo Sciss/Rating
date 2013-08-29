@@ -1,4 +1,4 @@
-package com.guigarage.jrating;
+package de.sciss.rating.j;
 
 import java.util.ArrayList;
 import java.util.List;
