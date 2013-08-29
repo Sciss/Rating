@@ -5,14 +5,23 @@ import java.util.List;
 
 public class DefaultRatingModel implements RatingModel {
 
-	private int maxCount = 5;
-	
-	private int markCount = 0;
+	private int maxCount;
+	private int markCount;
 	
 	private List<RatingListener> listeners;
 	
-	public DefaultRatingModel() {
-		listeners = new ArrayList<RatingListener>();
+    public DefaultRatingModel() {
+        this(5);
+    }
+
+    public DefaultRatingModel(int maxCount) {
+           this(maxCount, 0);
+    }
+
+	public DefaultRatingModel(int maxCount, int markCount) {
+        this.maxCount   = maxCount;
+        this.markCount  = markCount;
+		listeners       = new ArrayList<RatingListener>();
 	}
 	
 	@Override
@@ -27,14 +36,20 @@ public class DefaultRatingModel implements RatingModel {
 
 	@Override
 	public void setMarkCount(int markCount) {
-		this.markCount = markCount;
-		fireIndexChanged();
+        if (this.markCount != markCount) {
+            if (markCount < 0 || markCount > maxCount) throw new IllegalArgumentException(String.valueOf(markCount));
+            this.markCount = markCount;
+            fireIndexChanged();
+        }
 	}
 
 	@Override
 	public void setMaxCount(int maxCount) {
-		this.maxCount = maxCount;
-		fireMaxCountChanged();
+        if (this.maxCount != maxCount) {
+            if (maxCount < 1) throw new IllegalArgumentException(String.valueOf(maxCount));
+            this.maxCount = maxCount;
+            fireMaxCountChanged();
+        }
 	}
 
 	private void fireIndexChanged() {

@@ -2,7 +2,6 @@ package de.sciss.rating.j.ui;
 
 import de.sciss.rating.j.JRating;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 

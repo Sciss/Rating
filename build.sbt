@@ -6,10 +6,6 @@ organization in ThisBuild := "de.sciss"
 
 scalaVersion in ThisBuild := "2.10.2"
 
-crossPaths := false
-
-autoScalaLibrary := false
-
 homepage in ThisBuild := Some(url("https://github.com/Sciss/Rating"))
 
 licenses in ThisBuild := Seq("Apache 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0"))
@@ -19,7 +15,16 @@ licenses in ThisBuild := Seq("Apache 2.0" -> url("http://www.apache.org/licenses
 // lazy val rating = project.in(file(".")).aggregate(rating_java)
 
 lazy val `rating-java` = project.in(file("java")).settings(
-  description := "A Java Swing Component for Rating"
+  description := "A Java Swing Component for Rating",
+  crossPaths := false,
+  autoScalaLibrary := false
+)
+
+lazy val `rating-scala` = project.in(file("scala")).dependsOn(`rating-java`).settings(
+  description := "A Scala Swing Component for Rating",
+  libraryDependencies <+= scalaVersion { sv =>
+    "org.scala-lang" % "scala-swing" % sv
+  }
 )
 
 // ---- publishing ----

@@ -22,12 +22,24 @@ public class JRating extends JComponent implements RatingListener {
 	
 	private RatingUI ui;
 	
-	public JRating() {
-		setModel(new DefaultRatingModel());
-		setAlignment(RatingAlignment.HORIZONTAL);
+    public JRating() {
+           this(new DefaultRatingModel());
+       }
+
+	public JRating(RatingModel model) {
+        this(model, RatingAlignment.HORIZONTAL);
+    }
+
+    public JRating(RatingAlignment alignment) {
+           this(new DefaultRatingModel(), alignment);
+       }
+
+    public JRating(RatingModel model, RatingAlignment alignment) {
+		setModel(model);
+		setAlignment(alignment);
 		setGap(2);
 		setUI(new RenderBasedRatingUI(new StarRenderer()));
-//		setUI(new BasicRatingUI());
+		// setUI(new BasicRatingUI());
 		setFocusable(true);
 	}
 	

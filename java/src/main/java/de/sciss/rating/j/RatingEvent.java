@@ -6,14 +6,15 @@ public class RatingEvent extends EventObject {
 
 	private static final long serialVersionUID = 1L;
 
-	private  int markCount;
+	private final int markCount;
+	private final int maxCount;
+    // private final boolean adjusting;
 	
-	private int maxCount;
-	
-	public RatingEvent(Object source, int markCount, int maxCount) {
+	public RatingEvent(Object source, int markCount, int maxCount /*, boolean adjusting */) {
 		super(source);
-		this.markCount = markCount;
-		this.maxCount = maxCount;
+		this.markCount  = markCount;
+		this.maxCount   = maxCount;
+        // this.adjusting  = adjusting;
 	}
 	
 	public int getMarkCount() {
@@ -23,4 +24,8 @@ public class RatingEvent extends EventObject {
 	public int getMaxCount() {
 		return maxCount;
 	}
+
+    // public boolean isAdjusting {
+    //     return adjusting;
+    // }
 }
