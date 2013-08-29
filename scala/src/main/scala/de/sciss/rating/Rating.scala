@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2013 Hanns Holger Rutz. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package de.sciss.rating
 
 import scala.swing.{Publisher, Component}
@@ -32,6 +48,21 @@ object Rating {
   * For example, with the default star renderer,
   * if the maximum number of elements is five, and the rating is two, a total of
   * five stars are shown, the first two of which are visually highlighted.
+  *
+  * This component publishes `ValueChanged` events when the model's current index changes.
+  * Example:
+  *
+  * {{{
+  * new Rating {
+  *   maximum = 10  // number of stars
+  *   value   =  5  // number of selected stars, i.e. current rating
+  *
+  *   listenTo(this)
+  *   reactions += {
+  *     case ValueChanged(_) => println("Adjusted")
+  *   }
+  * }
+  * }}}
   *
   * @param model0 the model to use for the rating
   * @param align0 the alignment (horizontal or vertical) of the component
