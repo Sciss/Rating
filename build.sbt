@@ -1,6 +1,6 @@
 name := "Rating"
 
-version in ThisBuild := "0.1.0"
+version in ThisBuild := "0.1.1"
 
 organization in ThisBuild := "de.sciss"
 
@@ -27,6 +27,8 @@ lazy val `rating-java` = project.in(file("java")).settings(
   description := "A Java Swing Component for Rating",
   crossPaths := false,
   autoScalaLibrary := false,
+  javacOptions in Compile += "-g",        // this is passed to javadoc (WTF?!), so the following line is needed:
+  javacOptions in (Compile, doc) := Nil,  // yeah right, sssssuckers
   pomExtra := pomBase ++ pomDevsBoth
 )
 

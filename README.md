@@ -11,7 +11,7 @@ All modifications, extensions and Scala project (C)opyright 2013 by Hanns Holger
     "de.sciss" %  "rating-java"  % v  // Java only component
     "de.sciss" %% "rating-scala" % v  // Scala component
 
-The current version `v` is `0.1.+`
+The current version `v` is `0.1.1+`
 
 ## building
 

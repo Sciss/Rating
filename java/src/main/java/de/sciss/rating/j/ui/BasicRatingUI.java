@@ -20,12 +20,7 @@
 
 package de.sciss.rating.j.ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyAdapter;
@@ -58,28 +53,43 @@ public class BasicRatingUI extends RatingUI {
 			if (e.getKeyCode() == KeyEvent.VK_LEFT
 					|| e.getKeyCode() == KeyEvent.VK_DOWN
 					|| e.getKeyCode() == KeyEvent.VK_MINUS) {
-				rateComponent.setMarkCount(Math.max(0,
-						rateComponent.getMarkedCount() - 1));
+				rateComponent.setMarkCount(Math.max(0, rateComponent.getMarkedCount() - 1));
+
 			} else if (e.getKeyCode() == KeyEvent.VK_RIGHT
 					|| e.getKeyCode() == KeyEvent.VK_UP
 					|| e.getKeyCode() == KeyEvent.VK_PLUS) {
-				rateComponent.setMarkCount(Math.min(
-						rateComponent.getMaxCount(),
-						rateComponent.getMarkedCount() + 1));
+				rateComponent.setMarkCount(Math.min(rateComponent.getMaxCount(), rateComponent.getMarkedCount() + 1));
 			}
 		}
 	}
 
 	private class RateMouseHandler extends MouseAdapter {
+        private boolean valid = false;
+
 		@Override
 		public void mousePressed(MouseEvent e) {
 			rateComponent.requestFocus();
-            process(e);
+            // require that mouse Y is inside vertical mark space
+            boolean horiz   = isHoriz();
+            Dimension dim   = getMarkSize();
+            int mExt        = horiz ? dim.height : dim.width;
+            Component c     = e.getComponent();
+            int cExt        = horiz ? c.getHeight() : c.getWidth();
+            int pos         = horiz ? e.getY() : e.getX();
+            if (pos >= ((cExt - mExt) >> 1) - 1 && pos <= ((cExt + mExt) >> 1) + 1) {
+                valid = true;
+                process(e);
+            }
 		}
 
         @Override
         public void mouseDragged(MouseEvent e) {
-            process(e);
+            if (valid) process(e);
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            valid = false;
         }
 
         private void process(MouseEvent e) {
@@ -135,26 +145,30 @@ public class BasicRatingUI extends RatingUI {
 		}
 	}
 
+    private boolean isHoriz() { return rateComponent.getAlignment().equals(RatingAlignment.HORIZONTAL); }
+
 	@Override
 	public void paint(Graphics g, JComponent c) {
 		super.paint(g, c);
-		Dimension dim = getMarkSize();
-		int x = paintInsets.left;
-		int y = paintInsets.top;
-		for (int i = 0; i < rateComponent.getMaxCount(); i++) {
-			Rectangle rect = new Rectangle();
-			rect.x = x;
-			rect.y = y;
-			rect.width = dim.width;
-			rect.height = dim.height;
+		Dimension dim   = getMarkSize();
+        boolean horiz   = isHoriz();
+        int num         = rateComponent.getMaxCount();
+        int value       = rateComponent.getMarkedCount();
+		int x           = horiz ? paintInsets.left : (c.getWidth() - dim.width) >> 1;
+		int y           = horiz ? (c.getHeight() - dim.height) >> 1 : paintInsets.top;
+		for (int i = 0; i < num; i++) {
+			Rectangle rect      = new Rectangle();
+			rect.x              = x;
+			rect.y              = y;
+			rect.width          = dim.width;
+			rect.height         = dim.height;
 
-			boolean marked = (i < rateComponent.getMarkedCount());
-			boolean selected = (i == rateComponent.getMarkedCount() - 1);
+			boolean marked      = i  < value;
+			boolean selected    = i == value - 1;
 
-			paintMark(g, (JRating) c, i, rect, marked, selected,
-					rateComponent.isFocusOwner());
+			paintMark(g, (JRating) c, i, rect, marked, selected, rateComponent.isFocusOwner());
 
-			if (rateComponent.getAlignment().equals(RatingAlignment.HORIZONTAL)) {
+			if (horiz) {
 				x = x + rateComponent.getGap() + dim.width;
 			} else {
 				y = y + rateComponent.getGap() + dim.height;
@@ -162,8 +176,8 @@ public class BasicRatingUI extends RatingUI {
 		}
 	}
 
-	protected void paintMark(Graphics g, JRating c, int index,
-			Rectangle rect, boolean marked, boolean selected, boolean focused) {
+	protected void paintMark(Graphics g, JRating c, int index, Rectangle rect,
+                             boolean marked, boolean selected, boolean focused) {
 		g.setColor(Color.black);
 		if (marked) {
 			g.setColor(rateComponent.getForeground());
@@ -210,7 +224,6 @@ public class BasicRatingUI extends RatingUI {
 				}
 			}
 		}
-		return new Dimension(x + dim.width + paintInsets.right, y + dim.height
-				+ paintInsets.bottom);
+		return new Dimension(x + dim.width + paintInsets.right, y + dim.height + paintInsets.bottom);
 	}
 }
