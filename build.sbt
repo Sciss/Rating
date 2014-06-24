@@ -4,7 +4,9 @@ version in ThisBuild := "0.1.1"
 
 organization in ThisBuild := "de.sciss"
 
-scalaVersion in ThisBuild := "2.10.2"
+scalaVersion in ThisBuild := "2.11.1"
+
+crossScalaVersions in ThisBuild := Seq("2.11.1", "2.10.2")
 
 homepage in ThisBuild := Some(url("https://github.com/Sciss/Rating"))
 
@@ -34,8 +36,11 @@ lazy val `rating-java` = project.in(file("java")).settings(
 
 lazy val `rating-scala` = project.in(file("scala")).dependsOn(`rating-java`).settings(
   description := "A Scala Swing Component for Rating",
-  libraryDependencies <+= scalaVersion { sv =>
-    "org.scala-lang" % "scala-swing" % sv
+  libraryDependencies += { val sv = scalaVersion.value
+    if (sv startsWith "2.10")
+      "org.scala-lang" % "scala-swing" % sv
+    else
+      "org.scala-lang.modules" %% "scala-swing" % "1.0.1"
   },
   pomExtra := pomBase ++ pomDevsSciss
 )
