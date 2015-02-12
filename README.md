@@ -1,5 +1,8 @@
 # Rating
 
+[![Flattr this](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=sciss&url=https%3A%2F%2Fgithub.com%2FSciss%2FRating&title=Rating%20Swing%20Widget&language=Java&tags=github&category=software)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.sciss/rating_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.sciss/rating_2.11)
+
 A rating (mark-out-of-X-stars) component for Swing. This started as a fork/clone from the Java project at https://code.google.com/p/jrating/. Original project and fork are released under the [Apache 2.0 License](LICENSE). The original author was Hendrik Ebbers.
 
 The Java component, in sub project `java`, is accompanied by a component for the Scala programming language, found in sub project `scala`.
